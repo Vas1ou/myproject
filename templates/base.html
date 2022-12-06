@@ -34,13 +34,16 @@
                         <span class="fs-3">Категории</span>
                     </p>
                     {% for item in categories %}
+                    {% if item.animal__count > 0 %}
                     <ul class="list-unstyled ps-1">
                         <li class="mb-3">
-                            <a href="{{ item.get_absolute_url }}" class="btn btn-toggle align-items-center rounded collapsed">
+                            <a href="{{ item.get_absolute_url }}"
+                               class="btn btn-toggle align-items-center rounded collapsed">
                                 {{ item.title }}
                             </a>
                         </li>
                     </ul>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -61,7 +64,8 @@
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
             {% for item in menu %}
-            <li class="nav-item"><a href="{% url item.url_name %}" class="nav-link px-2 text-muted">{{ item.title }}</a></li>
+            <li class="nav-item"><a href="{% url item.url_name %}" class="nav-link px-2 text-muted">{{ item.title }}</a>
+            </li>
             {% endfor %}
         </ul>
         <p class="text-center text-muted">© 2023 КотоПёс, Inc</p>
