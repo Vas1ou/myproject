@@ -10,9 +10,14 @@ menu = [
 
 
 class DataMixin:
+    paginate_by = 3
+
     def get_user_context(self, **kwargs):
+        user_menu = menu.copy()
+        if not self.request.user.is_authenticated:
+            user_menu.pop(2)
         context = kwargs
         categories = Category.objects.annotate(Count('animal'))
-        context['menu'] = menu
+        context['menu'] = user_menu
         context['categories'] = categories
         return context

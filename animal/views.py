@@ -92,9 +92,8 @@ class AddPage(LoginRequiredMixin, DataMixin, CreateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        dm_context = self.get_user_context(title='Добавить анкету')
+        dm_context = self.get_user_context(title=menu[2]['title'])
         return dict((list(context.items())) + list(dm_context.items()))
-
 
 
 def register(request):

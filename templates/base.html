@@ -60,6 +60,41 @@
 </div>
 
 
+{% if page_obj.has_other_pages %}
+<div class="container d-flex align-items-center justify-content-center">
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link">Предыдущая</a>
+        </li>
+        {% endif %}
+        {% for p in paginator.page_range %}
+        {% if page_obj.number == p %}
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">{{ p }}</a>
+        </li>
+        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+        <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Следующая</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link">Предыдущая</a>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+
+
 <div class="container-fluid">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
