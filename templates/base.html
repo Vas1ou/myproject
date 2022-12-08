@@ -18,8 +18,13 @@
                 {% endfor %}
             </ul>
             <div class="text-end">
+                {% if request.user.is_authenticated %}
+                <div class="btn btn-outline-light me-2">{{ user.username }}</div>
+                <a href="{% url 'logout' %}" type="button" class="btn btn-warning">Выйти</a>
+                {% else %}
                 <a href="{% url 'register' %}" type="button" class="btn btn-outline-light me-2">Регистрация</a>
                 <a href="{% url 'login' %}" type="button" class="btn btn-warning">Войти</a>
+                {% endif %}
             </div>
         </div>
     </div>

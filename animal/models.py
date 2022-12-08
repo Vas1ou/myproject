@@ -37,4 +37,4 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
-        ordering = ['-title']
+        ordering = ['title']
