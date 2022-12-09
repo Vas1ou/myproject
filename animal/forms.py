@@ -8,7 +8,7 @@ from .models import *
 
 
 class AddPostForm(forms.ModelForm):
-    captcha = CaptchaField(label='Введите код с картинки')
+    captcha = CaptchaField(label='Напишите ответ')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -31,7 +31,7 @@ class RegisterUserForm(UserCreationForm):
     email = forms.EmailField(label='Email', widget=forms.EmailInput)
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput)
-    captcha = CaptchaField(label='Введите код с картинки')
+    captcha = CaptchaField(label='Напишите ответ')
 
     class Meta:
         model = User
@@ -41,3 +41,10 @@ class RegisterUserForm(UserCreationForm):
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput)
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(label='Имя', max_length=150, widget=forms.TextInput)
+    email = forms.EmailField(label='Email', widget=forms.EmailInput)
+    content = forms.CharField(label='Текст', widget=forms.Textarea)
+    captcha = CaptchaField(label='Напишите ответ')

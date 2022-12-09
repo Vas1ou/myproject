@@ -1,7 +1,7 @@
 from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
-from django.http import HttpResponseNotFound, HttpResponse
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import *
@@ -25,7 +25,7 @@ class AnimalHome(DataMixin, ListView):
         return dict((list(context.items())) + list(dm_context.items()))
 
     def get_queryset(self):
-        return Animal.objects.filter(is_published=True)
+        return Animal.objects.filter(is_published=True).select_related('category')
 
 
 # def index(request):
@@ -41,7 +41,7 @@ class AnimalCategory(DataMixin, ListView):
     allow_empty = False
 
     def get_queryset(self):
-        return Animal.objects.filter(category__slug=self.kwargs['category_slug'], is_published=True)
+        return Animal.objects.filter(category__slug=self.kwargs['category_slug'], is_published=True).select_related('category')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -119,14 +119,37 @@ class LoginUser(DataMixin, LoginView):
 
 def logout_user(request):
     logout(request)
-
     return redirect('login')
 
 
-def about(request):
-    categories = Category.objects.annotate(Count('animal'))
-    return render(request, 'animal/about.html', {'title': 'О нас', 'categories': categories})
+class ContactFormView(DataMixin, FormView):
+    form_class = ContactForm
+    template_name = 'animal/feedback.html'
+    success_url = reverse_lazy('home')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        dm_context = self.get_user_context(title=menu[1]['title'])
+        return dict((list(context.items())) + list(dm_context.items()))
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return redirect('home')
 
 
-def feedback(request):
-    return HttpResponse('Обратная связь')
+# def about(request):
+#     user_menu = menu.copy()
+#     if not request.user.is_authenticated:
+#         user_menu.pop(2)
+#     categories = Category.objects.annotate(Count('animal'))
+#     context = {'title': menu[0]['title'], 'categories': categories, 'menu': user_menu}
+#     return render(request, 'animal/about.html', context=context)
+
+
+class About(DataMixin, TemplateView):
+    template_name = 'animal/about.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        dm_context = self.get_user_context(title=menu[0]['title'])
+        return dict((list(context.items())) + list(dm_context.items()))
