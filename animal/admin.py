@@ -16,11 +16,9 @@ class AnimalAdmin(admin.ModelAdmin):
 
     def get_photo(self, object):
         if object.photo:
-            return mark_safe(f"<img src='{ object.photo.url }' width=50>")
+            return mark_safe(f"<img src='{object.photo.url}' width=50>")
 
     get_photo.short_description = 'Миниатюра'
-
-
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -33,5 +31,6 @@ class CategoryAdmin(admin.ModelAdmin):
 admin.site.register(Animal, AnimalAdmin)
 admin.site.register(Category, CategoryAdmin)
 
+# Настройка админ - панели
 admin.site.site_header = 'Администрирование сайта о Домашних животных'
 admin.site.site_title = 'О домашних животных'
