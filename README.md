@@ -1,4 +1,9 @@
 # myproject - Мой проект 
+![Python](https://img.shields.io/badge/Python-v3.11.0-yellow)
+![Django](https://img.shields.io/badge/Django-v4.1.3-blue)
+![](https://img.shields.io/badge/django_debug_toolbar-inactive)
+![](https://img.shields.io/badge/django_simple_captcha-inactive)
+
 #### Работая с этим проектом я закреплял навыки работы с Django framework, Django ORM
 #### Разработал сайт для Приюта для домашних животных
 ## Реализовал поиск по категориям животных, которые интересуют пользователя:
