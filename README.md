@@ -7,6 +7,26 @@
 ### Работая с этим проектом я закреплял навыки работы с Django framework, Django ORM, а так же с системой контроля версий Git
 DRY и KISS для меня не имеют ничего общего с сухим поцелуем, и еще я понимаю почему MVC = MTV
 ### Разработал сайт Приюта для домашних животных "КотоПёс"
+## Последние изменения:
+### Создал новое приложение users для работы с пользователями и изменил логику регистрации и авторизации
+![Register](https://user-images.githubusercontent.com/108910572/211352050-e08eaba8-ed40-4116-9b71-7faa3ccb8dea.png)
+### Теперь, после регистрации, на почтовый ящик пользователя приходит письмо с сылкой для подтверждения email и авторизации
+![mail](https://user-images.githubusercontent.com/108910572/211352353-5811c53c-0d1b-46ea-9ae1-d04ecb6e9aa4.png)
+### Если ссылка некорректна, пользователю об этом сообщается. При попытке входа пользователем, который не верифицировал свою почту, на почтовый ящик уходит новое письмо с ссылкой
+![Безымянный](https://user-images.githubusercontent.com/108910572/211353089-7fbac3af-5c3f-4349-95e4-abb3d9b63d7d.png)
+![invalid_verify](https://user-images.githubusercontent.com/108910572/211353563-ae613afb-ad21-45f1-bc03-c804eed9d075.png)
+### При переходе по корректной ссылке, пользователь автоматически авторизуется и подтверждает свой email адрес
+![email_verify](https://user-images.githubusercontent.com/108910572/211353920-36aee595-c15d-4b3e-a119-69c57d1a6a4a.png)
+### В админ-панеле добавил соответствующее поле для удобства
+![admin](https://user-images.githubusercontent.com/108910572/211354195-09b84cc6-8afb-444c-8d43-ac3a309fabf7.png)
+### Так же в приложении реализована функция сброса пароля. Использовались стандартные классы Django, я лишь переопределил шаблоны
+![изменение пароля](https://user-images.githubusercontent.com/108910572/211354820-aca2e8d5-a3c0-426a-812c-abe78de1fb93.png)
+![Безымянный2](https://user-images.githubusercontent.com/108910572/211355074-7b73c28c-03f5-4b34-8b15-1004c4bf01b5.png)
+![Безымянный3](https://user-images.githubusercontent.com/108910572/211354863-4647923b-6527-4ba0-a624-bff50769c2cf.png)
+## Благодаря этому лучше разобрался в строении Django-проекта
+![Безымянный4](https://user-images.githubusercontent.com/108910572/211355522-a7b5beee-c931-4ea7-b20a-7d9f11d2be95.png)
+![Безымянный5](https://user-images.githubusercontent.com/108910572/211355536-d630e31d-49eb-4c76-a4f8-3600bcab0b11.png)
+
 ## Реализовал поиск по категориям животных, которые интересуют пользователя:
 ![image](https://user-images.githubusercontent.com/108910572/209527029-b9890d6d-2a6a-44db-bcef-7bf193e26363.png)
 <br/>
