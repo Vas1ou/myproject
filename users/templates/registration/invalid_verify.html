@@ -1,0 +1,6 @@
+{% extends 'base_users.html' %}
+
+{% block content %}
+    <p>Ваша ссылка некорректна, попробуйте войти заново, что бы получить новую ссылку на почту.</p>
+    <a href="{% url 'login' %}"><button type="submit" class="btn btn-light">Войти заново</button></a>
+{% endblock %}

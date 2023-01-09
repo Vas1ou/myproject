@@ -25,22 +25,22 @@ class AddPostForm(forms.ModelForm):
         fields = ['title', 'slug', 'content', 'photo', 'is_published', 'category']
 
 
-class RegisterUserForm(UserCreationForm):
-    first_name = forms.CharField(label='Имя пользователя', widget=forms.TextInput)
-    username = forms.CharField(label='Логин', widget=forms.TextInput)
-    email = forms.EmailField(label='Email', widget=forms.EmailInput)
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput)
-    captcha = CaptchaField(label='Напишите ответ')
-
-    class Meta:
-        model = User
-        fields = ('username', 'first_name', 'email', 'password1', 'password2',)
-
-
-class LoginUserForm(AuthenticationForm):
-    username = forms.CharField(label='Логин', widget=forms.TextInput)
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+# class RegisterUserForm(UserCreationForm):
+#     first_name = forms.CharField(label='Имя пользователя', widget=forms.TextInput)
+#     username = forms.CharField(label='Логин', widget=forms.TextInput)
+#     email = forms.EmailField(label='Email', widget=forms.EmailInput)
+#     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
+#     password2 = forms.CharField(label='Повтор пароля', widget=forms.PasswordInput)
+#     captcha = CaptchaField(label='Напишите ответ')
+#
+#     class Meta:
+#         model = User
+#         fields = ('username', 'first_name', 'email', 'password1', 'password2',)
+#
+#
+# class LoginUserForm(AuthenticationForm):
+#     username = forms.CharField(label='Логин', widget=forms.TextInput)
+#     password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
 
 
 class ContactForm(forms.Form):

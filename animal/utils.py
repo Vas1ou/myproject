@@ -1,6 +1,6 @@
 from django.db.models import Count
 
-from animal.models import *
+from .models import *
 
 menu = [
     {'title': "О нас", 'url_name': 'about'},

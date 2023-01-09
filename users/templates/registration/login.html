@@ -1,0 +1,24 @@
+{% extends 'base_users.html' %}
+
+{% block content %}
+
+<h1 class="h3 mb-3 fw-normal">{{ title }}</h1>
+<form action="{% url 'login' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for f in form %}
+    <label for="{{ f.id_for_label }}" class="col-sm-2 col-form-label col-form-label-sm h3 mb-3 fw-normal">
+        {{ f.label }}
+    </label>{{ f }}
+    <div class="col-sm-10">
+        {{ f.errors }}
+    </div>
+    {% endfor %}
+    <br>
+    <button type="submit" class="btn btn-light">Войти</button>
+</form>
+<br>
+    <a href="{% url 'password_reset' %}">Забыли пароль?</a>
+
+
+{% endblock %}

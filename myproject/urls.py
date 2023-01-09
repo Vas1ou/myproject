@@ -22,6 +22,7 @@ from animal.views import pageNotFound
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
     path('captcha/', include('captcha.urls')),
     path('', include('animal.urls')),
     path('__debug__/', include('debug_toolbar.urls')),

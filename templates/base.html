@@ -18,7 +18,8 @@
                 {% endfor %}
             </ul>
             <div class="text-end">
-                {% if request.user.is_authenticated %}
+                {% if user.is_authenticated %}
+                <div class="btn btn-outline-light me-2">{{ user }}</div>
                 <a href="{% url 'logout' %}" type="button" class="btn btn-warning">Выйти</a>
                 {% else %}
                 <a href="{% url 'register' %}" type="button" class="btn btn-outline-light me-2">Регистрация</a>
@@ -102,6 +103,8 @@
 <div class="container-fluid">
     <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link px-2 text-muted">Главная страница</a>
+            </li>
             {% for item in menu %}
             <li class="nav-item"><a href="{% url item.url_name %}" class="nav-link px-2 text-muted">{{ item.title }}</a>
             </li>
